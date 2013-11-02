@@ -48,7 +48,7 @@ class MadlibWordTable(Base):
     madlib_id = Column(Integer, ForeignKey('madlibs.id'), primary_key=True)
     word_type_id = Column(Integer, ForeignKey('word_types.id'), primary_key=True)
     word_type = relationship('WordType')
-    order = Column(Integer)
+    order = Column(Integer, primary_key=True)
 
     def __repr__(self):
         return '<a %r at position %i>' % (self.word_type.description, self.order)
