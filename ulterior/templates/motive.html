@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+	{% if motivation %}
+		<p>
+			<h3>{{ prefix.text }} <strong>{{ motivation }}</strong>.</h3>
+		</p>
+
+	{% else %}
+	  <h1>You have no motivation :[</h1>
+	{% endif %}
+
+	That doesn't sound right!  <a href='{{ url_for("motive") }}'>Start over.</a>
+
+{% endblock %}
