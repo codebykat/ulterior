@@ -106,7 +106,7 @@ madlibs = [
 	[ "to {} your {}, who was {} by a {}", [ "verb", "relative", "past-tense verb", "animal" ] ],
 	[ "to find true {}", [ "emotion" ] ],
 	[ "to acquire {} for strategic {} purposes", ["place", "animal"]],
-	[ "to collect all the {} in {} and stick it in your {}", ["plural noun", "place", "body part"]],
+	[ "to collect all the {} in {} and stick them in your {}", ["plural noun", "place", "body part"]],
 	[ "to steal from the {} and give to the {}", ["adjective", "adjective"]],
 	[ "to save up {} {} so you can buy a really {} {}", ["number", "plural noun", "adjective", "noun"]]
 ]
