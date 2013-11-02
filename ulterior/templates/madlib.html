@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% import 'lucky.html' as lucky %}
 
 {% block content %}
 	{% if madlib %}
@@ -9,7 +10,7 @@
 		<p>
 			Fill out the following to determine your motivation.
 		</p>
-		<form action='/' method='POST' role='form'>
+		<form action='motive' method='POST' role='form'>
 			<input type='hidden' name='madlib_id' value='{{ madlib.id }}' />
 			{% for blank in madlib.blanks %}
 				<div class='form-group'>
@@ -19,8 +20,11 @@
 			{% endfor %}
 			<input type='submit' class='btn btn-default' value='Motivate Me!' />
 		</form>
+
 	{% else %}
 	  <h1>You have no motivation :[</h1>
 	{% endif %}
+
+	{{ lucky.render() }}
 
 {% endblock %}
