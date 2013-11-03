@@ -13,6 +13,8 @@ prefixes = [
 	"More than anything, you want to ",
 	"Most of all, you want to",
 	"You will not rest until you ",
+	"You are training day and night to ",
+	"Ever since you were a child, you knew it was your destiny to ",
 ]
 
 tags = [
@@ -36,6 +38,7 @@ tags = [
 ]
 
 words = {
+	'bee':								[ 'noun', 'animal', ],
 	'bees':								[ 'plural noun' ],
 	'bicycle':							[ 'noun', 'vehicle', ],
 	'candies':							[ 'plural noun', 'food', ],
@@ -44,11 +47,14 @@ words = {
 	'cats':								[ 'plural noun', ],
 	'demon':							[ 'noun', 'animal', ],
 	'dog':								[ 'noun', 'animal', ],
+	'duck':								[ 'noun', 'animal', ],
 	'ears':								[ 'plural noun', 'body part', ],
+	'elbow':							[ 'noun', 'body part', ],
 	'eyes':								[ 'plural noun', 'body part', ],
 	'face':								[ 'noun', 'body part', ],
 	'hands':							[ 'plural noun', 'body part', ],
 	'house':							[ 'noun', ],
+	'Manhattan':						[ 'noun', 'place', ],
 	'money':							[ 'noun', ],
 	'monkey':							[ 'noun', 'animal', ],
 	'mouth':							[ 'noun', 'body part', ],
@@ -74,20 +80,25 @@ words = {
 	'seduce':		[ 'verb', ],
 
 	'colorless':	[ 'adjective', ],
+	'famous':		[ 'adjective', ],
 	'happy':		[ 'adjective', ],
-	'ugly':			[ 'adjective', ],
+	'mad':			[ 'adjective', ],
 	'powerful':		[ 'adjective', ],
 	'popular':		[ 'adjective', ],
-	'famous':		[ 'adjective', ],
 	'rich':			[ 'adjective', ],
-	'mad':			[ 'adjective', ],
+	'silly':		[ 'adjective', ],
+	'ugly':			[ 'adjective', ],
 
 	'furiously':	[ 'adverb', ],
 
-	'David Bowie':		[ 'person', ],
-	'Obama':			[ 'person', ],
-	'Ichabod Crane':	[ 'person', ],
-	'Ada Lovelace':		[ 'person', ],
+	'David Bowie':			[ 'person', ],
+	'Obama':				[ 'person', ],
+	'Ichabod Crane':		[ 'person', ],
+	'Ada Lovelace':			[ 'person', ],
+	'Miley Cyrus':			[ 'person', ],
+	'Katy Perry':			[ 'person', ],
+	'The Queen of England':	[ 'person', ],
+	'Isaac Asimov':			[ 'person', ],
 
 	'red':		[ 'color', 'adjective', ],
 	'green':	[ 'color', 'adjective', ],
@@ -103,6 +114,8 @@ words = {
 	'your father':		[ 'relative', 'person', ],
 	'your brother':		[ 'relative', 'person', ],
 	'your sister':		[ 'relative', 'person', ],
+	'your step-mother':	[ 'relative', 'person', ],
+	'your step-father': [ 'relative', 'person', ],
 
 	'love':			[ 'emotion', ],
 	'hate':			[ 'emotion', ],
@@ -117,17 +130,17 @@ words = {
 
 
 madlibs = [
-	"take over {{place}}",
+	"take over {{place}} with your army of {{adjective}} {{plural noun}}",
 	"{{verb}} {{person}}, who was {{past-tense verb}} by a {{animal}}",
 	"find true {{emotion}}",
 	"acquire {{place}} for strategic {{animal}} purposes",
 	"collect all the {{plural noun}} in {{place}} and stick them in your {{body part}}",
 	"steal from the {{adjective}} and give to the {{adjective}}",
-	"save up {{number}} {{plural noun}} so you can buy a really {{adjective}} {{noun}}",
+	"save {{number}} {{plural noun}} so you can buy a really {{adjective}} {{noun}}",
 	"become {{adjective}} and {{adjective}}",
 	"win the {{emotion}} of a {{adjective}} {{profession}}",
 	"become the most {{adjective}} {{profession}} in {{place}}",
-	"be more {{adjective}} than {{person}}",
+	"become more {{adjective}} than {{person}}",
 	"learn the answer to the ultimate question of {{noun}}, {{place}} and {{noun}}",
 	"find a cure for {{relative}}, who has come down with a {{adjective}} illness",
 	"{{verb}} the {{adjective}} {{profession}} who {{past-tense verb}} {{person}}",
