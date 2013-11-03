@@ -1,4 +1,4 @@
-motivation-madlibs
+ulterior
 ==================
 
 What's my motivation?
