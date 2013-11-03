@@ -12,6 +12,25 @@ prefixes = [
 	"You are on a quest ",
 ]
 
+tags = [
+	'adjective',
+	'adverb',
+	'animal',
+	'body part',
+	'color',
+	'emotion',
+	'food',
+	'noun',
+	'number',
+	'person',
+	'place',
+	'plural noun',
+	'past-tense verb',
+	'relative',
+	'vehicle',
+	'verb',
+]
+
 words = {
 	'bees':								[ 'plural noun', 'animal', ],
 	'bicycle':							[ 'noun', 'vehicle', ],
@@ -97,8 +116,14 @@ def seed_db():
 		p = Prefix( prefix )
 		db_session.add( p )
 
-	for word, tags in words.items():
-		w = Word( word, tags )
+	for tag in tags:
+		t = Tag( tag )
+		db_session.add( t )
+
+	db_session.commit()
+
+	for word, wordtags in words.items():
+		w = Word( word, wordtags )
 		db_session.add( w )
 
 	for madlib in madlibs:

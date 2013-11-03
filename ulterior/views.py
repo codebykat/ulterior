@@ -4,13 +4,14 @@ from ulterior.models import Prefix, Word, Tag, Madlib
 
 from flask import render_template, request
 
-from random import randint, choice
+from sqlalchemy.sql.expression import func
+
+from random import choice
 import re
 
 @app.route( '/' )
 def madlib():
-	rand = randint( 1, Madlib.query.count() )	
-	m = Madlib.query.get( rand )
+	m = Madlib.query.order_by( func.random() ).first()
 
 	regex = re.compile( r"\{\{(.+?)\}\}" )
 	blanks = regex.findall( m.text )
@@ -18,22 +19,21 @@ def madlib():
 	return render_template( 'madlib.html', madlib=m, blanks=blanks )
 
 
+# helper function for motive().  not sure if it belongs here...
 def fill_in_word( match ):
 	tagname = match.group( 1 )
 	t = Tag.query.filter( Tag.text == tagname ).first()
-	if None == t or [] == t.words:
+	if None is t or [] == t.words:
 		return tagname
 	return choice( t.words ).text
 
 
 @app.route( '/motive', methods=['GET', 'POST'] )
 def motive():
-	rand = randint( 1, Prefix.query.count() )
-	prefix = Prefix.query.get( rand )
+	prefix = Prefix.query.order_by( func.random() ).first()
 
 	if 'GET' == request.method :
-		rand = randint( 1, Madlib.query.count() )	
-		m = Madlib.query.get( rand )
+		m = Madlib.query.order_by( func.random() ).first()
 	else:
 		m = Madlib.query.get( request.form['madlib_id'] )
 
@@ -60,15 +60,12 @@ def motive():
 
 			# todo: lowercase -- but not proper nouns??
 			w = Word.query.filter( Word.text == word ).first()
-			if None == w:
+			if None is w:
 				w = Word( word, [ tag ] )
 				db_session.add( w )
 
 			# add these tags if they don't exist
 			t = Tag.query.filter( Tag.text == tag ).first()
-			if None == t:
-				t = Tag( tag )
-				db_session.add( t )
 
 			# todo: only if it doesn't exist already?
 			w.tags.append( t )
