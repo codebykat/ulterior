@@ -1,7 +1,16 @@
+body {
+  font-size: 2em;
+}
+
 .container {
   width: auto;
   max-width: 680px;
   padding: 0 15px;
+}
+
+.motivation {
+  padding-top: 50px;
+  min-height: 300px;
 }
 
 .lucky-btn {
