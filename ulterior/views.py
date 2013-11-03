@@ -58,8 +58,14 @@ def motive():
 
 			# add new words to the dictionary
 
-			# todo: lowercase -- but not proper nouns??
+			# force to lowercase unless it's a proper noun
+			if tag in ['person', 'place'] :
+				word = word.title()
+			else:
+				word = word.lower()
+
 			w = Word.query.filter( Word.text == word ).first()
+
 			if None is w:
 				w = Word( word, [ tag ] )
 				db_session.add( w )

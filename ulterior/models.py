@@ -43,7 +43,7 @@ class Word( Base ):
 	def __init__( self, text=None, tags=[] ):
 		self.text = text
 		for tag in tags:
-			t = Tag.query.filter( Tag.text == tag.lower() ).first()
+			t = Tag.query.filter( Tag.text == tag ).first()
 			self.tags.append( t )
 
 	def __repr__( self ):
