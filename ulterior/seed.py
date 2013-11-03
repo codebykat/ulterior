@@ -26,6 +26,7 @@ tags = [
 	'adjective',
 	'adverb',
 	'animal',
+	'beverage',
 	'body part',
 	'color',
 	'emotion',
@@ -132,6 +133,10 @@ words = {
 	'computer programmer':	[ 'profession', ],
 	'fireman':				[ 'profession', ],
 	'scientist':			[ 'profession', ],
+
+	'beer':			[ 'beverage', ],
+	'wine':			[ 'beverage', ],
+	'orange juice': [ 'beverage', ],
 }
 
 
@@ -148,8 +153,9 @@ madlibs = [
 	"become the most {{adjective}} {{profession}} in {{place}}",
 	"become more {{adjective}} than {{person}}",
 	"learn the answer to the ultimate question of {{noun}}, {{place}} and {{noun}}",
-	"find a cure for {{relative}}, who has come down with a {{adjective}} illness",
+	# "find a cure for {{relative}}, who has come down with {{illness}}",
 	"{{verb}} the {{adjective}} {{profession}} who {{past-tense verb}} {{person}}",
+	"drink {{beverage}} with {{person}} and chat about {{plural noun}}",
 ]
 
 
