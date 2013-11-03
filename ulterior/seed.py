@@ -15,6 +15,11 @@ prefixes = [
 	"You will not rest until you ",
 	"You are training day and night to ",
 	"Ever since you were a child, you knew it was your destiny to ",
+	"It came to you in a dream that you must ",
+	"An oracle told you that you should ",
+	"The top item on your to do list is to ",
+	"You've been exiled and cannot return home until you ",
+	"Following the instructions laid out in your horoscope, you've decided to ",
 ]
 
 tags = [
@@ -97,7 +102,7 @@ words = {
 	'Ada Lovelace':			[ 'person', ],
 	'Miley Cyrus':			[ 'person', ],
 	'Katy Perry':			[ 'person', ],
-	'The Queen of England':	[ 'person', ],
+	'the Queen of England':	[ 'person', ],
 	'Isaac Asimov':			[ 'person', ],
 
 	'red':		[ 'color', 'adjective', ],
