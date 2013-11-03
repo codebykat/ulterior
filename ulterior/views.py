@@ -65,9 +65,7 @@ def motive():
 				# add new words to the dictionary
 
 				# force to lowercase unless it's a proper noun
-				if tag in ['person', 'place'] :
-					word = word.title()
-				else:
+				if tag not in ['person', 'place'] :
 					word = word.lower()
 
 				w = Word.query.filter( Word.text == word ).first()
@@ -79,8 +77,6 @@ def motive():
 				else:
 					# add these tags if they don't exist
 					t = Tag.query.filter( Tag.text == tag ).first()
-
-					# todo: only if it doesn't exist already?
 					w.tags.append( t )
 
 			sentence = sentence.replace( "{{" + tag + "}}", word, 1 )
