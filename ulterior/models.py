@@ -17,8 +17,8 @@ class Prefix( Base ):
 
 word_tag_table = Table(
 	'word_tag_table', Base.metadata,
-	Column( 'tag_id', Integer, ForeignKey( 'word_tags.id' ) ),
-	Column( 'word_id', Integer, ForeignKey( 'words.id') )
+	Column( 'tag_id', Integer, ForeignKey( 'word_tags.id' ), primary_key=True ),
+	Column( 'word_id', Integer, ForeignKey( 'words.id'), primary_key=True )
 )
 
 class Tag( Base ):

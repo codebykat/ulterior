@@ -54,27 +54,36 @@ def motive():
 			word = request.form["madlib-blank-" + str( i )].strip()
 			i += 1
 
-			sentence = sentence.replace( "{{" + tag + "}}", word, 1 )
+			# entering blanks means we pick a random word
+			if '' == word:
+				t = Tag.query.filter( Tag.text == tag ).first()
+				if None is t or [] == t.words:
+					word = tag
+				word = choice( t.words ).text
 
-			# add new words to the dictionary
-
-			# force to lowercase unless it's a proper noun
-			if tag in ['person', 'place'] :
-				word = word.title()
 			else:
-				word = word.lower()
+				# add new words to the dictionary
 
-			w = Word.query.filter( Word.text == word ).first()
+				# force to lowercase unless it's a proper noun
+				if tag in ['person', 'place'] :
+					word = word.title()
+				else:
+					word = word.lower()
 
-			if None is w:
-				w = Word( word, [ tag ] )
-				db_session.add( w )
+				w = Word.query.filter( Word.text == word ).first()
 
-			# add these tags if they don't exist
-			t = Tag.query.filter( Tag.text == tag ).first()
+				if None is w:
+					w = Word( word, [ tag ] )
+					db_session.add( w )
 
-			# todo: only if it doesn't exist already?
-			w.tags.append( t )
+				else:
+					# add these tags if they don't exist
+					t = Tag.query.filter( Tag.text == tag ).first()
+
+					# todo: only if it doesn't exist already?
+					w.tags.append( t )
+
+			sentence = sentence.replace( "{{" + tag + "}}", word, 1 )
 
 		db_session.commit()
 
