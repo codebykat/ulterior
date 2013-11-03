@@ -1,5 +1,5 @@
 from ulterior.database import db_session
-from ulterior.models import Prefix, Word, WordType, Madlib
+from ulterior.models import Prefix, Word, Tag, Madlib
 
 
 prefixes = [
@@ -9,129 +9,100 @@ prefixes = [
 	"The deepest desire of your heart is ",
 	"The passion that drives you is the need ",
 	"Secretly, you really want ",
-	"You are on a quest "
+	"You are on a quest ",
 ]
 
 words = {
-	"food": [
-		"Soylent",
-		"peanut butter",
-		"pasturized process cheese food"
-	],
-	"body part": [
-		"ears",
-		"eyes",
-		"nose",
-		"face",
-		"mouth",
-		"hands"
-	],
-	"noun": [
-		"car",
-		"house",
-		"bicycle"
-	],
-	"plural noun": [
-		"money",
-		"cats",
-		"candies",
-		"bees"
-	],
-	"animal": [
-		"dog",
-		"cat",
-		"monkey",
-		"sheep",
-		"unicorn",
-		"demon"
-	],
-	"verb": [
-		"avenge",
-		"find",
-		"marry"
-	],
-	"past-tense verb": [
-		"murdered",
-		"attacked",
-		"devoured",
-		"raised",
-		"kidnapped"
-	],
-	"adjective": [
-		"colorless",
-		"happy",
-		"ugly"
-	],
-	"adverb": [
-		"furiously"
-	],
-	"place": [
-		"the world",
-		"the moon",
-		"San Francisco"
-	],
-	"person": [
-		"David Bowie",
-		"Obama",
-		"Ichabod Crane",
-		"Ada Lovelace"
-	],
-	"color": [
-		"red",
-		"green",
-		"blue",
-		"black",
-		"white"
-	],
-	"number": [
-		"7",
-		"42",
-		"one million"
-	],
-	"relative": [
-		"mother",
-		"father",
-		"brother",
-		"sister"
-	],
-	"emotion": [
-		"love",
-		"hate"
-	]
+	'bees':								[ 'plural noun', 'animal', ],
+	'bicycle':							[ 'noun', 'vehicle', ],
+	'candies':							[ 'plural noun', 'food', ],
+	'car':								[ 'noun', 'vehicle', ],
+	'cat':								[ 'noun', 'animal', ],
+	'cats':								[ 'plural noun', 'animal', ],
+	'demon':							[ 'noun', 'animal', ],
+	'dog':								[ 'noun', 'animal', ],
+	'ears':								[ 'plural noun', 'body part', ],
+	'eyes':								[ 'plural noun', 'body part', ],
+	'face':								[ 'noun', 'body part', ],
+	'hands':							[ 'plural noun', 'body part', ],
+	'house':							[ 'noun', ],
+	'money':							[ 'noun', ],
+	'monkey':							[ 'noun', 'animal', ],
+	'mouth':							[ 'noun', 'body part', ],
+	'nose':								[ 'noun', 'body part', ],
+	'pasturized process cheese food':	[ 'noun', 'food', ],
+	'peanut butter':					[ 'noun', 'food', ],
+	'sheep':							[ 'noun', 'plural noun', 'animal', ],
+	'San Francisco':					[ 'noun', 'place', ],
+	'Soylent':							[ 'noun', 'food', ],
+	'the moon':							[ 'noun', 'place', ],
+	'the world':						[ 'noun', 'place', ],
+	'unicorn':							[ 'noun', 'animal', ],
+
+	'attacked':		[ 'past-tense verb', ],
+	'avenge':		[ 'verb', ],
+	'devoured':		[ 'past-tense verb', ],
+	'find':			[ 'verb', ],
+	'kidnapped':	[ 'past-tense verb', ],
+	'marry':		[ 'verb', ],
+	'murdered':		[ 'past-tense verb', ],
+	'raised':		[ 'past-tense verb', ],
+	'rescue':		[ 'verb', ],
+
+	'colorless':	[ 'adjective', ],
+	'happy':		[ 'adjective', ],
+	'ugly':			[ 'adjective', ],
+
+	'furiously':	[ 'adverb', ],
+
+	'David Bowie':		[ 'person', ],
+	'Obama':			[ 'person', ],
+	'Ichabod Crane':	[ 'person', ],
+	'Ada Lovelace':		[ 'person', ],
+
+	'red':		[ 'color', 'adjective', ],
+	'green':	[ 'color', 'adjective', ],
+	'blue':		[ 'color', 'adjective', ],
+	'black':	[ 'color', 'adjective', ],
+	'white':	[ 'color', 'adjective', ],
+
+	'7':			[ 'number', ],
+	'42':			[ 'number', ],
+	'one million':	[ 'number', ],
+
+	'mother':		[ 'relative', ],
+	'father':		[ 'relative', ],
+	'brother':		[ 'relative', ],
+	'sister':		[ 'relative', ],
+
+	'love':			[ 'emotion', ],
+	'hate':			[ 'emotion', ],
 }
 
 
 madlibs = [
-	[ "to take over {}", [ "place" ] ],
-	[ "to {} your {}, who was {} by a {}", [ "verb", "relative", "past-tense verb", "animal" ] ],
-	[ "to find true {}", [ "emotion" ] ],
-	[ "to acquire {} for strategic {} purposes", ["place", "animal"]],
-	[ "to collect all the {} in {} and stick them in your {}", ["plural noun", "place", "body part"]],
-	[ "to steal from the {} and give to the {}", ["adjective", "adjective"]],
-	[ "to save up {} {} so you can buy a really {} {}", ["number", "plural noun", "adjective", "noun"]]
+	"to take over {{place}}",
+	"to {{verb}} your {{relative}}, who was {{past-tense verb}} by a {{animal}}",
+	"to find true {{emotion}}",
+	"to acquire {{place}} for strategic {{animal}} purposes",
+	"to collect all the {{plural noun}} in {{place}} and stick them in your {{body part}}",
+	"to steal from the {{adjective}} and give to the {{adjective}}",
+	"to save up {{number}} {{plural noun}} so you can buy a really {{adjective}} {{noun}}",
 ]
 
 
 
 def seed_db():
 	for prefix in prefixes:
-		p = Prefix(prefix)
-		db_session.add(p)
-		db_session.commit()
+		p = Prefix( prefix )
+		db_session.add( p )
 
-	for word_type, word_examples in words.items():
-		wt = WordType(word_type)
-		db_session.add(wt)
-		db_session.commit()
-
-		wt = WordType.query.filter(WordType.description == word_type).first()
-
-		for example in word_examples:
-			w = Word(wt, example)
-			db_session.add(w)
+	for word, tags in words.items():
+		w = Word( word, tags )
+		db_session.add( w )
 
 	for madlib in madlibs:
-		m = Madlib(madlib[0], madlib[1])
-		db_session.add(m)
+		m = Madlib( madlib )
+		db_session.add( m )
 
 	db_session.commit()

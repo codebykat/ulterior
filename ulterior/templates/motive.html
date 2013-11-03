@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% import 'lucky.html' as lucky %}
 
 {% block content %}
@@ -9,11 +9,11 @@
 		</p>
 
 	{% else %}
-	  <h1>You have no motivation :[</h1>
+		<h1>You have no motivation :[</h1>
 	{% endif %}
 
 	<p>
-		That doesn't sound right!  <a href='{{ url_for("madlib") }}'>Start over.</a>
+		That doesn't sound right!  <a href="{{ url_for( 'madlib' ) }}">Start over.</a>
 	</p>
 	{{ lucky.render() }}
 

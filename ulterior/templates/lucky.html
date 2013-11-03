@@ -1,5 +1,5 @@
 {%- macro render() -%}
-	<a href='{{ url_for("motive") }}'>
-		<input type="button" class='btn lucky-btn' value="I'm feeling lucky!" />
+	<a href="{{ url_for( 'motive' ) }}">
+		<input type="button" class="btn lucky-btn" value="I'm feeling lucky!" />
 	</a>
 {%- endmacro %}
