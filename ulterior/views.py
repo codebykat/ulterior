@@ -1,4 +1,5 @@
 from ulterior import app
+from ulterior.database import db_session
 from ulterior.models import Prefix, Word, Tag, Madlib
 
 from flask import render_template, request
@@ -11,14 +12,14 @@ def madlib():
 	rand = randint( 1, Madlib.query.count() )	
 	m = Madlib.query.get( rand )
 
-	regex = re.compile(r"\{\{(.+?)\}\}")
+	regex = re.compile( r"\{\{(.+?)\}\}" )
 	blanks = regex.findall( m.text )
 
 	return render_template( 'madlib.html', madlib=m, blanks=blanks )
 
 
 def fill_in_word( match ):
-	tagname = match.group(1)
+	tagname = match.group( 1 )
 	t = Tag.query.filter( Tag.text == tagname ).first()
 	if None == t or [] == t.words:
 		return tagname
@@ -38,7 +39,7 @@ def motive():
 
 	sentence = m.text
 
-	regex = re.compile(r"\{\{(.+?)\}\}")
+	regex = re.compile( r"\{\{(.+?)\}\}" )
 
 	if 'GET' == request.method :
 		# fill in with random words from the dictionary
@@ -50,19 +51,29 @@ def motive():
 
 		i=0
 		for tag in tags:
-			word = request.form["madlib-blank-" + str( i )]
+			word = request.form["madlib-blank-" + str( i )].strip()
 			i += 1
 
 			sentence = sentence.replace( "{{" + tag + "}}", word, 1 )
 
-			# TODO add new words to the dictionary
-			# wt = blanks[i]
+			# add new words to the dictionary
 
 			# todo: lowercase -- but not proper nouns??
-			# word_in_dictionary = Word.query.filter(Word.word_type == wt).filter(Word.text == word)
-			# if word_in_dictionary is None:
-			# 	Word(word_type, word)
-			# TODO save to database
+			w = Word.query.filter( Word.text == word ).first()
+			if None == w:
+				w = Word( word, [ tag ] )
+				db_session.add( w )
+
+			# add these tags if they don't exist
+			t = Tag.query.filter( Tag.text == tag ).first()
+			if None == t:
+				t = Tag( tag )
+				db_session.add( t )
+
+			# todo: only if it doesn't exist already?
+			w.tags.append( t )
+
+		db_session.commit()
 
 		# TODO save generated sentence for posterity - maybe only on up-vote?
 

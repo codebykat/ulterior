@@ -47,8 +47,8 @@ class Word( Base ):
 			if t == None:
 				t = Tag( tag.lower() )
 				db_session.add( t )
-				db_session.commit()
 			self.tags.append( t )
+		db_session.commit()
 
 	def __repr__( self ):
 		return '<Word %r (tags: %r)>' % ( self.text, ', '.join( [ tag.text for tag in self.tags ] ) )
