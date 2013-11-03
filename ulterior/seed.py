@@ -60,6 +60,7 @@ words = {
 	'hands':							[ 'plural noun', 'body part', ],
 	'house':							[ 'noun', ],
 	'Manhattan':						[ 'noun', 'place', ],
+	'moon':								[ 'noun', ],
 	'money':							[ 'noun', ],
 	'monkey':							[ 'noun', 'animal', ],
 	'mouth':							[ 'noun', 'body part', ],
@@ -69,7 +70,7 @@ words = {
 	'sheep':							[ 'noun', 'plural noun', 'animal', ],
 	'San Francisco':					[ 'noun', 'place', ],
 	'Soylent':							[ 'noun', 'food', ],
-	'the moon':							[ 'noun', 'place', ],
+	'the moon':							[ 'place', ],
 	'the world':						[ 'noun', 'place', ],
 	'unicorn':							[ 'noun', 'animal', ],
 
