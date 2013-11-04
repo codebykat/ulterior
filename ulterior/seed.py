@@ -21,6 +21,7 @@ prefixes = [
 	"You've been exiled and cannot return home until you ",
 	"Following the instructions laid out in your horoscope, you've decided to ",
 	"They said you couldn't do it, but you'll show them when you ",
+	"Your mission, should you choose to accept it, is ",
 ]
 
 tags = [
